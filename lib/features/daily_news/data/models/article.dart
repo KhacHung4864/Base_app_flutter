@@ -1,10 +1,10 @@
 import 'package:base_app/features/daily_news/domain/entities/article.dart';
 import 'package:floor/floor.dart';
 
-@Entity(tableName: 'articles', primaryKeys: [''])
+@Entity(tableName: 'articles', primaryKeys: ['id'])
 class ArticleModel extends ArticleEntity {
   const ArticleModel({
-    SourceModel? super.source,
+    super.id,
     super.author,
     super.title,
     super.description,
@@ -15,8 +15,8 @@ class ArticleModel extends ArticleEntity {
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> articleModelData) {
-    var b = ArticleModel(
-      source: SourceModel.fromJson(articleModelData['source']),
+    return ArticleModel(
+      id: articleModelData['id'] ?? "",
       title: articleModelData['title'] ?? "",
       author: articleModelData['author'] ?? "",
       description: articleModelData['description'] ?? "",
@@ -24,18 +24,6 @@ class ArticleModel extends ArticleEntity {
       urlToImage: articleModelData['urlToImage'] ?? "",
       publishedAt: articleModelData['publishedAt'] ?? "",
       content: articleModelData['content'] ?? "",
-    );
-    return b;
-  }
-}
-
-class SourceModel extends SourceEntity {
-  const SourceModel({super.id, super.name});
-
-  factory SourceModel.fromJson(Map<String, dynamic> sourceModelData) {
-    return SourceModel(
-      id: sourceModelData['id'] ?? "",
-      name: sourceModelData['name'] ?? "",
     );
   }
 }

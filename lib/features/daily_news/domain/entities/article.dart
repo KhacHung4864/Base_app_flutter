@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 //cho phép so sánh các đối tượng ArticleEntity với nhau dựa trên giá trị của từng thuộc tính, chứ không phải dựa trên tham chiếu.
 class ArticleEntity extends Equatable {
-  final SourceEntity? source;
+  final int? id;
   final String? author;
   final String? title;
   final String? description;
@@ -12,7 +12,7 @@ class ArticleEntity extends Equatable {
   final String? content;
 
   const ArticleEntity({
-    this.source,
+    this.id,
     this.author,
     this.title,
     this.description,
@@ -25,7 +25,7 @@ class ArticleEntity extends Equatable {
   @override
   List<Object?> get props {
     return [
-      source,
+      id,
       author,
       title,
       description,
@@ -34,17 +34,5 @@ class ArticleEntity extends Equatable {
       publishedAt,
       content,
     ];
-  }
-}
-
-class SourceEntity extends Equatable {
-  final String? id;
-  final String? name;
-
-  const SourceEntity({this.id, this.name});
-
-  @override
-  List<Object?> get props {
-    return [id, name];
   }
 }
