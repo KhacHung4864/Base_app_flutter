@@ -16,7 +16,7 @@ class ArticleModel extends ArticleEntity {
 
   factory ArticleModel.fromJson(Map<String, dynamic> articleModelData) {
     return ArticleModel(
-      id: articleModelData['id'] ?? "",
+      id: articleModelData['id'] ?? 0,
       title: articleModelData['title'] ?? "",
       author: articleModelData['author'] ?? "",
       description: articleModelData['description'] ?? "",
@@ -24,6 +24,19 @@ class ArticleModel extends ArticleEntity {
       urlToImage: articleModelData['urlToImage'] ?? "",
       publishedAt: articleModelData['publishedAt'] ?? "",
       content: articleModelData['content'] ?? "",
+    );
+  }
+
+  factory ArticleModel.fromEntity(ArticleEntity articleEntity) {
+    return ArticleModel(
+      id: articleEntity.id,
+      author: articleEntity.author,
+      title: articleEntity.title,
+      description: articleEntity.description,
+      url: articleEntity.url,
+      urlToImage: articleEntity.urlToImage,
+      publishedAt: articleEntity.publishedAt,
+      content: articleEntity.content,
     );
   }
 }

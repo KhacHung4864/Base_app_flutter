@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/theme/app_themes.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await intializeInjectionContainer();
   runApp(const MyApp());
 }
